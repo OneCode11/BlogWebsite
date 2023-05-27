@@ -1,0 +1,16 @@
+<%- include("partials/header"); %>
+
+<h1 class="header">My Blogs:</h1>
+<% if(content.length == 0) { %>
+    <h2>You don't have any blogs yet! Go to "/compose" to add a new one!</h2>
+<% } %>
+<% content.forEach((post) => { %>
+    <div class="blogBlocks">
+        <h2><%= post.blogTitle %></h2>
+        <% let postPath = "posts/" + post.blogTitle.replace(" ", "-").toLowerCase(); %>
+        <p><%= post.blogBody.substring(0, 100) + "..." %></p>
+        <a href="<%= postPath %>">Read full blog</a>
+    </div>
+<% }) %> 
+
+<%- include("partials/footer"); %>
